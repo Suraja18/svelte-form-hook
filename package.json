@@ -1,6 +1,6 @@
 {
   "name": "svelte-form-hook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight form management library for Svelte, inspired by React Hook Form.",
   "type": "module",
   "keywords": [
