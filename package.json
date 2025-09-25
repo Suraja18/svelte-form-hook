@@ -1,6 +1,6 @@
 {
   "name": "svelte-form-hook",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A lightweight form management library for Svelte, inspired by React Hook Form.",
   "type": "module",
   "keywords": [
@@ -31,11 +31,11 @@
   },
   "devDependencies": {
     "@sveltejs/package": "^2.5.4",
-    "@sveltejs/vite-plugin-svelte": "^6.2.0",
+    "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
     "@tsconfig/svelte": "^5.0.5",
-    "svelte": "^5.39.5",
+    "svelte": "^5.39.6",
     "svelte-check": "^4.3.2",
     "svelte-preprocess": "^6.0.3",
     "typescript": "^5.9.2",
@@ -53,5 +53,17 @@
     "dist",
     "src",
     "README.md"
-  ]
+  ],
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "svelte": "./index.js",
+      "default": "./index.js"
+    },
+    "./components": {
+      "types": "./components.d.ts",
+      "svelte": "./components.js",
+      "default": "./components.js"
+    }
+  }
 }

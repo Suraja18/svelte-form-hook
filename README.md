@@ -5,14 +5,15 @@ A lightweight form management library for Svelte that provides form state manage
 ## Installation
 
 ```bash
-npm install svelte-hook-form
+npm install svelte-form-hook
+yarn add svelte-form-hook
 ```
 
 ## Usage
 
 ```svelte
 <script lang="ts">
-  import { useForm } from "svelte-hook-form";
+  import { useForm } from "svelte-form-hook";
 
   const { register, handleSubmit, formState } = useForm({
     defaultValues: {
@@ -56,7 +57,7 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 
 ```svelte
 <script lang="ts">
-  import { useForm, zodResolver  } from "svelte-hook-form";
+  import { useForm, zodResolver  } from "svelte-form-hook";
 
   const form = useForm<LoginFormValues>({
     defaultValues: {
@@ -87,7 +88,7 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 ```svelte
 <!-- EmailInput.svelte -->
 <script lang="ts">
-  import { useFormContext } from 'svelte-hook-form';
+  import { useFormContext } from 'svelte-form-hook';
 
   const {
     register,
@@ -109,7 +110,7 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 ```svelte
 <!-- PasswordInput.svelte -->
 <script lang="ts">
-  import { useFormContext } from 'svelte-hook-form';
+  import { useFormContext } from 'svelte-form-hook';
 
   const {
     register,
