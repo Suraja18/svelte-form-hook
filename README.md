@@ -11,9 +11,33 @@ yarn add svelte-form-hook
 
 ## Usage
 
+To use this package, you must (this is required, if you do not create this component, the useFormContext will not work) create a Input components as below. you can modify other required props as required but below export are necessary (required).
+
+```svelte
+<script lang="ts">
+  export let value: string | number = "";
+  export let name: string | undefined = undefined;
+  export let onInput: ((e: Event) => void) | undefined = undefined;
+  export let onBlur: ((e: FocusEvent) => void) | undefined = undefined;
+</script>
+
+<div class="float-label-wrapper">
+  <input
+    {name}
+    bind:value
+    on:input={onInput}
+    on:blur={onBlur}
+  />
+
+</div>
+```
+
+Then use above Input Components as
+
 ```svelte
 <script lang="ts">
   import { useForm } from "svelte-form-hook";
+  import Input from "./Input.svelte";
 
   const { register, handleSubmit, formState } = useForm({
     defaultValues: {
@@ -29,9 +53,9 @@ yarn add svelte-form-hook
 </script>
 
 <form onsubmit={handleSubmit(onSubmit)}>
-  <input {...register("name")} />
-  <input {...register("email")} />
-  <input {...register("password")} />
+  <Input {...register("name")} />
+  <Input {...register("email")} />
+  <Input {...register("password")} />
   <button type="submit">Submit</button>
 </form>
 ```
@@ -58,6 +82,8 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 ```svelte
 <script lang="ts">
   import { useForm, zodResolver  } from "svelte-form-hook";
+  import { FormProvider } from "svelte-form-hook/components";
+  import Input from "./Input.svelte";
 
   const form = useForm<LoginFormValues>({
     defaultValues: {
@@ -77,7 +103,7 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 
 <FormProvider {form}>
     <form onsubmit={handleSubmit(onSubmit)}>
-    <input {...register("name")} />
+    <Input {...register("name")} />
     <EmailInput />
     <PasswordInput />
     <button type="submit">Submit</button>
@@ -89,10 +115,11 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 <!-- EmailInput.svelte -->
 <script lang="ts">
   import { useFormContext } from 'svelte-form-hook';
+  import Input from "./Input.svelte";
 
   const {
     register,
-    errors: { subscribe: errors },
+    errors,
   } = useFormContext();
 
   $: emailError = $errors?.email?.message;
@@ -100,7 +127,7 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 
 <label>
   Email
-  <input type="email" use:register={'email'} />
+  <Input type="email" use:register={'email'} />
 </label>
 {#if emailError}
   <span class="error">{emailError}</span>
@@ -111,10 +138,11 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 <!-- PasswordInput.svelte -->
 <script lang="ts">
   import { useFormContext } from 'svelte-form-hook';
+  import Input from "./Input.svelte";
 
   const {
     register,
-    errors: { subscribe: errors },
+    errors,
   } = useFormContext();
 
   $: passwordError = $errors?.password?.message;
@@ -122,7 +150,7 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 
 <label>
   Password
-  <input type="password" use:register={'password'} />
+  <Input type="password" use:register={'password'} />
 </label>
 {#if passwordError}
   <span class="error">{passwordError}</span>

@@ -3,7 +3,13 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [svelte()],
+  plugins: [
+    svelte({
+      compilerOptions: {
+        customElement: false,
+      },
+    }),
+  ],
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),

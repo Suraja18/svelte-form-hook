@@ -5,15 +5,9 @@
  * validation, and form handling with a React Hook Form-like API.
  */
 
-// Type exports
-export type {
-  FieldErrors,
-  FormState,
-  FormValues,
-  Resolver,
-  UseFormOptions,
-  UseFormReturn,
-} from "./types";
-
-export { FORM_CONTEXT_KEY, useForm, useFormContext } from "./svelte-hook-form";
+export {
+  FORM_CONTEXT_KEY,
+  useForm,
+  useFormContext,
+} from "./lib/svelte-hook-form";
 export { zodResolver } from "./zod-resolver";

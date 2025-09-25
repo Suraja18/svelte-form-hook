@@ -1,1 +1,1 @@
-export { default as FormContext } from "./FormContext.svelte";
+export { default as FormProvider } from "./FormContext.svelte";

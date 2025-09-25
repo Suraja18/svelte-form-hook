@@ -1,6 +1,6 @@
 {
   "name": "svelte-form-hook",
-  "version": "1.0.2",
+  "version": "1.0.9",
   "description": "A lightweight form management library for Svelte, inspired by React Hook Form.",
   "type": "module",
   "keywords": [
@@ -23,8 +23,9 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && npm run build:types",
+    "build": "vite build && npm run build:types && npm run copy:svelte",
     "build:types": "svelte-package && tsc",
+    "copy:svelte": "cp -r src/components dist/ || xcopy /e /i src\\components dist\\components",
     "prepublishOnly": "npm run build",
     "test": "vitest",
     "lint": "eslint ."
@@ -32,17 +33,17 @@
   "devDependencies": {
     "@sveltejs/package": "^2.5.4",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
+    "@tsconfig/svelte": "^5.0.5",
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
-    "@tsconfig/svelte": "^5.0.5",
+    "eslint": "^9.36.0",
+    "eslint-plugin-svelte": "^3.12.4",
     "svelte": "^5.39.6",
     "svelte-check": "^4.3.2",
     "svelte-preprocess": "^6.0.3",
+    "tslib": "^2.8.1",
     "typescript": "^5.9.2",
     "vite": "^7.1.7",
-    "eslint": "^9.36.0",
-    "eslint-plugin-svelte": "^3.12.4",
-    "tslib": "^2.8.1",
     "vitest": "^3.2.4",
     "zod": "^4.1.11"
   },
@@ -50,20 +51,16 @@
     "peer": "^1.0.2"
   },
   "files": [
-    "dist",
-    "src",
-    "README.md"
+    "dist"
   ],
   "exports": {
     ".": {
-      "types": "./index.d.ts",
-      "svelte": "./index.js",
-      "default": "./index.js"
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./components": {
-      "types": "./components.d.ts",
-      "svelte": "./components.js",
-      "default": "./components.js"
+      "svelte": "./dist/components/index.js",
+      "default": "./dist/components/index.js"
     }
   }
 }
