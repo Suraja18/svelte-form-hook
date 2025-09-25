@@ -81,7 +81,8 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 
 ```svelte
 <script lang="ts">
-  import { useForm, zodResolver  } from "svelte-form-hook";
+  import { useForm } from "svelte-form-hook";
+  import { zodResolver } from "svelte-form-hook/zod-resolver";
   import { FormProvider } from "svelte-form-hook/components";
   import Input from "./Input.svelte";
 
@@ -194,6 +195,36 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
     } = useForm();
 
 </script>
+```
+
+## Nested Values Support
+
+```svelte
+<script lang="ts">
+  import { useForm } from "svelte-form-hook";
+  import Input from "./Input.svelte";
+
+  const { register, handleSubmit, formState } = useForm({
+    defaultValues: {
+      user: {
+        name: "",
+        email: "",
+        password: "",
+      },
+    },
+  });
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+</script>
+
+<form onsubmit={handleSubmit(onSubmit)}>
+  <Input {...register("user.name")} />
+  <Input {...register("user.email")} />
+  <Input {...register("user.password")} />
+  <button type="submit">Submit</button>
+</form>
 ```
 
 ## Type
