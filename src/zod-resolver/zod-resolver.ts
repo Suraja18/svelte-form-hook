@@ -1,4 +1,5 @@
 import type { ZodSchema } from "zod";
+import type { FormValues } from "../types";
 
 /**
  * Creates a resolver function that validates form values against a Zod schema.
@@ -37,7 +38,7 @@ import type { ZodSchema } from "zod";
  *
  * @see https://zod.dev/ - Zod documentation for schema creation
  */
-export function zodResolver<T extends Record<string, any>>(
+export function zodResolver<T extends FormValues>(
   schema: ZodSchema<T>
 ): (values: T) => { values?: T; errors?: Record<string, string> } {
   return (values: T) => {

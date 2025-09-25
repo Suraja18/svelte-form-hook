@@ -10,4 +10,3 @@ export {
   useForm,
   useFormContext,
 } from "./lib/svelte-hook-form";
-export { zodResolver } from "./zod-resolver";

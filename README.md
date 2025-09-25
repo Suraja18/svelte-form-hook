@@ -11,7 +11,7 @@ yarn add svelte-form-hook
 
 ## Usage
 
-To use this package, you must (this is required, if you do not create this component, the useFormContext will not work) create a Input components as below. you can modify other required props as required but below export are necessary (required).
+To use this package, you must (this is required, if you do not create this component, this package will not work) create a Input components as below. you can modify other required props as required but below export are necessary (required).
 
 ```svelte
 <script lang="ts">
@@ -155,6 +155,53 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 {#if passwordError}
   <span class="error">{passwordError}</span>
 {/if}
+```
+
+## other Features
+
+```svelte
+| **Name**        | **Example Usage**                                         | **Type**   | **Description**                                        |
+| --------------- | --------------------------------------------------------- | ---------- | ------------------------------------------------------ |
+| `register`      | `register("email")`<br>`<Input {...register("email")} />` | `Function` | Registers an input or select element into the form.    |
+| `handleSubmit`  | `<form onSubmit={handleSubmit(onSubmit)}>`                | `Function` | Handles form submission, including validation.         |
+| `setValue`      | `setValue("email", "test@example.com")`                   | `Function` | Dynamically set a field's value.                       |
+| `setError`      | `setError("email",  "Email is required" )`                | `Function` | Manually set an error on a field.                      |
+| `clearErrors`   | `clearErrors("email")`<br>`clearErrors()`                 | `Function` | Clear errors on specific or all fields.                |
+| `trigger`       | `trigger("email")`<br>`trigger(["email", "password"])`    | `Function` | Trigger validation on one or more fields.              |
+| `reset`         | `reset()`<br>`reset({ email: "", password: "" })`         | `Function` | Reset form values and errors.                          |
+| `formState`     | `formState.isSubmitting`<br>`formState.isValid`           | `Object`   | Contains form state such as `isDirty`, `isValid`, etc. |
+| `values`        | `$values.email`, `$values.password`                       | `Object`   | Contains form values, similar to the `watch` method.   |
+| `errors`        | `$errors.email?.message`                                  | `Object`   | Contains field-specific errors after validation.       |
+| `isSubmitting`  | `$formState.isSubmitting`                                 | `boolean`  | Indicates if the form is currently submitting.         |
+| `defaultValues` | `useForm({ defaultValues: { email: "" } })`               | `Object`   | Initial values provided to the form.                   |
+
+
+<script lang="ts">
+  import { useForm } from "svelte-form-hook";
+  const {
+      register,
+      handleSubmit,
+      setValue,
+      setError,
+      clearErrors,
+      trigger,
+      reset,
+      formState,
+      values,
+      errors,
+      isSubmitting,
+      defaultValues,
+    } = useForm();
+
+</script>
+```
+
+## Type
+
+we have three different types exported from the package which you can use as,
+
+```ts
+import { FormValues, FieldErrors, Resolver } from "svelte-form-hook/types";
 ```
 
 ## License

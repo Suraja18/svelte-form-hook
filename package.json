@@ -1,6 +1,6 @@
 {
   "name": "svelte-form-hook",
-  "version": "1.0.9",
+  "version": "1.1.1",
   "description": "A lightweight form management library for Svelte, inspired by React Hook Form.",
   "type": "module",
   "keywords": [
@@ -61,6 +61,14 @@
     "./components": {
       "svelte": "./dist/components/index.js",
       "default": "./dist/components/index.js"
+    },
+    "./zod-resolver": {
+      "svelte": "./dist/zod-resolver/index.js",
+      "default": "./dist/zod-resolver/index.js"
+    },
+    "./types": {
+      "svelte": "./dist/types/index.d.ts",
+      "default": "./dist/types/index.d.ts"
     }
   }
 }
