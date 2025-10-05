@@ -9,10 +9,7 @@ export type FieldErrors = Record<string, string>;
  * Type representing form values
  * @template T - The shape of the form values
  */
-export type FormValues = Record<
-  string,
-  string | number | boolean | Date | File | FileList | null | undefined
->;
+export type FormValues = Record<string, any>;
 
 /**
  * Resolver function type for form validation
