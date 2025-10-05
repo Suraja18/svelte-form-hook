@@ -1,6 +1,6 @@
 # Svelte Hook Form
 
-A lightweight form management library for Svelte that provides form state management, validation, and form handling with a React Hook Form-like API. Built with TypeScript for excellent developer experience.
+A lightweight form management library for Svelte or Svelte kit that provides form state management, validation, and form handling with a React Hook Form-like API. Built with TypeScript for excellent developer experience.
 
 ## Installation
 
