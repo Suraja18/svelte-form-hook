@@ -54,6 +54,7 @@
   },
   "files": [
     "dist",
+    "src",
     "README.md"
   ],
   "publishConfig": {
