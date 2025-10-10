@@ -35,19 +35,19 @@
     "@sveltejs/package": "^2.5.4",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@tsconfig/svelte": "^5.0.5",
-    "@typescript-eslint/eslint-plugin": "^8.45.0",
-    "@typescript-eslint/parser": "^8.45.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.0",
+    "@typescript-eslint/parser": "^8.46.0",
     "eslint": "^9.37.0",
     "eslint-plugin-svelte": "^3.12.4",
     "semantic-release": "^24.2.9",
-    "svelte": "^5.39.8",
-    "svelte-check": "^4.3.2",
+    "svelte": "^5.39.11",
+    "svelte-check": "^4.3.3",
     "svelte-preprocess": "^6.0.3",
     "tslib": "^2.8.1",
     "typescript": "^5.9.3",
     "vite": "^7.1.9",
     "vitest": "^3.2.4",
-    "zod": "^4.1.11"
+    "zod": "^4.1.12"
   },
   "dependencies": {
     "peer": "^1.0.2"

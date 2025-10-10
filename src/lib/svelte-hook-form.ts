@@ -122,7 +122,7 @@ export function useForm<T extends FormValues = {}>(opts?: {
     return {
       name,
       value: fieldValue,
-      onInput: (e: Event) => {
+      oninput: (e: Event) => {
         const target = e.target as
           | HTMLInputElement
           | HTMLSelectElement
@@ -138,7 +138,7 @@ export function useForm<T extends FormValues = {}>(opts?: {
 
         dirty.update((d) => ({ ...d, [name]: true }));
       },
-      onBlur: () => {
+      onblur: () => {
         touched.update((t) => ({ ...t, [name]: true }));
         trigger(name);
       },
@@ -148,7 +148,7 @@ export function useForm<T extends FormValues = {}>(opts?: {
   function control<K extends keyof T & string>(name: K) {
     return {
       value: get(values)[name],
-      onChange: (val: T[K]) => {
+      oninput: (val: T[K]) => {
         values.update((v) => {
           v[name] = val;
           dirty.update((d) => ({ ...d, [name]: true }));
