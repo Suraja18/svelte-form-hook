@@ -7,6 +7,8 @@
 
 export {
   FORM_CONTEXT_KEY,
+  getNestedValue,
+  setNestedValue,
   useForm,
   useFormContext,
 } from "./lib/svelte-hook-form";
