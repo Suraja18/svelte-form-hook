@@ -30,7 +30,7 @@ import type { FieldErrors, FormValues, Resolver } from "../types";
 /**
  * Helper function to get nested value from an object using dot notation
  */
-function getNestedValue(obj: any, path: string): any {
+export function getNestedValue(obj: any, path: string): any {
   return path.split(".").reduce((acc, part) => {
     if (acc === null || acc === undefined) return undefined;
     return acc[part];
@@ -40,7 +40,7 @@ function getNestedValue(obj: any, path: string): any {
 /**
  * Helper function to set nested value in an object using dot notation
  */
-function setNestedValue(obj: any, path: string, value: any): any {
+export function setNestedValue(obj: any, path: string, value: any): any {
   const parts = path.split(".");
   const [last, ...rest] = parts.reverse();
   let current = obj;
