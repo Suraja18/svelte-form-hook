@@ -15,15 +15,30 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      # Checkout the repo
       - uses: actions/checkout@v4
+
+      # Set up Node
       - uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
-      - run: npm install
-      - run: npm run build
+          cache: "pnpm"
+
+      # Install pnpm globally
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Install dependencies using pnpm
+      - name: Install dependencies
+        run: pnpm install
+
+      # Build the project
+      - name: Build
+        run: pnpm run build
+
+      # Run semantic-release
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm run semantic-release
+        run: pnpm run semantic-release
